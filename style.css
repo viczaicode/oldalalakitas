@@ -1,0 +1,118 @@
+/* Reszponzív weboldal */
+* {
+    margin: 0;
+    padding: 0;
+    /* Minden HTML elem külső és belső margóját 0-ra raktuk */
+    box-sizing: border-box;
+    /* elem szélességébe width értékbe beletartozik a padding és border */
+}
+body {
+    width: 90%;
+    max-width: 900px;
+    margin: auto; /* Középre az oldalt */
+    background-color: rgb(255, 232, 154);
+}
+main {
+    background-color: rgb(255, 187, 0);
+    /* Tarolo, szülőelem */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1.5fr;
+    grid-template-areas: 
+    "h h h h h"
+    "n n n n n"
+    "b a a a j"
+    "f f f f f";
+}
+/* Minden gyerekelemet elnevezek. FONTOS, hogy mindegyiket! */
+header {
+    grid-area: h;
+}
+
+img {
+    width: 100%;
+}
+article {
+    grid-area: a;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+nav {
+    grid-area: n;
+}
+footer {
+    grid-area: f;
+}
+aside#bal {
+    grid-area: b;
+}
+aside#jobb {
+    grid-area: j;
+}
+header, nav, article, footer, aside {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+/* Menü kialakítása */
+nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    list-style-type: none;
+    text-align: center;
+}
+nav li {
+    background-color: brown;
+    padding: 5px;
+}
+nav a {
+    text-decoration: none;
+}
+
+/* TABLET NÉZET - RESZPONZIVITÁS KIALAKÍTÁSA */
+@media only screen and (max-width: 960px) { /* töréspont */
+    body, main {
+      /* background-color: lightblue; */
+      width: 100%;
+    }
+    main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "h h"
+        "n n"
+        "a b"
+        "j j"
+        "f f";
+    }
+
+  }
+
+
+/* MOBIL NÉZET - RESZPONZIVITÁS KIALAKÍTÁSA */
+@media only screen and (max-width: 590px) { /* töréspont */
+    body, main {
+      /* background-color: lightblue; */
+      width: 100%;
+    }
+    main {
+        font-size: 6vw;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "h"
+        "n"
+        "a"
+        "b"
+        "j"
+        "f";
+    }
+    nav ul {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    article {
+        grid-area: a;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+  }
